@@ -12,7 +12,7 @@
         - Connect to the database and copy contents of SQLObjects\CreateTables.sql and then execute (Creates tables)
         - Connect to the database and copy contents of SQLObjects\InsertIntoTables.sql and then execute (Loads dummy data)
 
-## Destop Installation
+## Developer Installation
 
 -   Install vscode and clone this repo to your desktop (Require git bash and Python 3)
 -   Launch vscode and open cloned project then open Git Bash terminal and run the following:
