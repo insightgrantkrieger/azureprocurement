@@ -9,6 +9,7 @@ class ConfigHelper():
       os.environ["aisearch_api_endpoint"] = "https://xxxxx.search.windows.net/indexes/azureblob-index/docs/search?api-version=2023-11-01"
       os.environ["aisearch_api_key"] = "xxxxxx"
       #test
+      #test
 
 
 
