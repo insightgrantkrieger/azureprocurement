@@ -9,8 +9,8 @@
     -  Azure AI Search 
     -  Azure OpenAI (1 Model deployment GPT 3.5 Turbo 16K)
     -  Azure sql server and database (1 database. Ensure SQL Auth and remember username and pwd)
-        - Connect to the database and copy contents of SQLObjects\CreateTables.sql and then execute (Creates tables)
-        - Connect to the database and copy contents of SQLObjects\InsertIntoTables.sql and then execute (Loads dummy data)
+        - Connect to the database and copy contents of [SQLObjects\CreateTables.sql](SQLObjects\CreateTables.sql) and then execute (Creates tables)
+        - Connect to the database and copy contents of [SQLObjects\InsertIntoTables.sql](SQLObjects\InsertIntoTables.sql)  and then execute (Loads dummy data)
 
 ## Developer Installation
 
