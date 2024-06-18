@@ -1,4 +1,4 @@
-#Installation
+##Installation
 Install vscode and clone this repo to your desktop
 Launch vscode and open cloned project then open Git Bash terminal and run the following:
 
