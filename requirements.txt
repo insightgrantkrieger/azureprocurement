@@ -1,0 +1,6 @@
+glob2
+openai
+pyodbc
+langchain_community
+langchain
+pypdf
