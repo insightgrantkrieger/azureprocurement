@@ -24,8 +24,8 @@
 -   python.exe -m pip install --upgrade pip
 -   pip install -r requirements.txt
 
-### Configure azure resources
--   Add OpenAI, AISearch, SQL database details into confighelper.py
+### Configure azure resources in the python project
+-   Add OpenAI, AISearch, SQL database details into [confighelper.py](confighelper.py) confighelper.py
 
 ### Configure python app document source
 -   create folder C:\\azureprocurement\\source\\ on your computer and paste PDF text documents into this folder
