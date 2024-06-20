@@ -23,7 +23,7 @@ while i < len(prompts):
     #Prompt after search with Q and A
     UserPromptFinal = "Document content: "+response+" Question start : "+prompts[i].UserPrompt
     ResultText = o.Prompt(UserPromptFinal,prompts[i].SystemPrompt)
-    UserPromptFinalScore = "Score the following between 1 and 5 based on how well the Document content met the criteria of the question below. Only return an integer between 1 and 5. 5 is the best match: "+UserPromptFinal
+    UserPromptFinalScore = "Score the following between 1 and 5 based on how well the answer was able to answer the question. Only return an integer between 1 and 5. If the answer is unable to answer the question it would be 1. If the answer is able to answer the question correctly it would be 5 : "+UserPromptFinal+" Answer:"
     ResultScore = o.Prompt(UserPromptFinalScore,prompts[i].SystemPrompt)
     s.insert_promptoutput(PromptGroupID,ResponseID,ResultText,ResultScore)
     print("Completed prompt "+prompts[i].Description)
