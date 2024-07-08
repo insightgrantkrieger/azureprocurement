@@ -1,6 +1,9 @@
-glob2
-openai
+SQLAlchemy
+pydantic-settings
 pyodbc
-langchain_community
+requests
+openai
+rich
 langchain
+langchain-community
 pypdf

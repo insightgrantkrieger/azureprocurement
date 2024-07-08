@@ -1,0 +1,73 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Git style
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-vcs-permalinks
+      - id: forbid-new-submodules
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
+      # Common errors
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-json
+        exclude: .devcontainer/devcontainer.json # this file allows for comments to be included
+      # Cross platform
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      # Security
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+      - id: detect-private-key
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v4.0.0-alpha.8" # Manually keep this to v3.1.0 until a final version of v4 is released
+    hooks:
+      - id: prettier
+
+  - repo: https://github.com/psf/black
+    rev: "24.4.2"
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-simplify
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: "v0.40.0"
+    hooks:
+      - id: markdownlint-fix
+
+# List all projen managed files / directories here
+# And the tests reference data
+exclude: |
+  (?x)^(
+    reference/.*|
+    .vscode/.*|
+  )$

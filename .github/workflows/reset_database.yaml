@@ -1,0 +1,48 @@
+name: Reset the database.
+
+on:
+  workflow_dispatch:
+
+env:
+  DB_USER: ${{ secrets.DB_USER }}
+  DB_PASS: ${{ secrets.DB_PASS }}
+  AISEARCH_API_KEY: ${{ secrets.AISEARCH_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+jobs:
+  show_results:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install MSSQL ODBC
+        run: |
+          curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+          curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 mssql-tools18
+          echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Setup the code
+        run: |
+          python3.10 -m venv venv
+          venv/bin/pip install --upgrade pip
+          venv/bin/pip install -r requirements.txt
+
+      - name: Drop and re-create the database
+        run: |
+          venv/bin/python3 ./rebuild_database.py | tee tmp_result
+
+      - name: Add questions
+        run: |
+          venv/bin/python3 ./add_questions.py | tee -a tmp_result
+
+      - name: Create summary
+        run: |
+          echo "\`\`\`\n$(cat tmp_result)" >> $GITHUB_STEP_SUMMARY
